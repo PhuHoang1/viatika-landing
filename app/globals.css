@@ -1,0 +1,637 @@
+@import "tailwindcss";
+
+/* =========================
+   ROOT TOKENS
+========================= */
+:root {
+  --background: #ffffff;
+  --dark-gray: #313C4B;
+
+  --text-size: 16px;
+  --text-size-second: 22px;
+
+  --bg-body: #FFFDF1;
+  --color-cream: #FFFDF1;
+  --color-blue: #606CEE;
+  --color-green: #1CD874;
+  --color-gray: #847F75;
+  --dark-blue: #4953C3;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+/* =========================
+   FONTS
+========================= */
+.font-albert { font-family: var(--font-albert), system-ui, sans-serif; }
+.font-ibm { font-family: var(--font-imb), system-ui, sans-serif; }
+
+
+body {
+  background: var(--bg-body);
+  color: var(--dark-gray);
+  font-family: var(--font-imb), system-ui, -apple-system, Segoe UI, sans-serif;
+  font-size: var(--text-size);
+  line-height: 1.4;
+  --S: 1;
+}
+
+/* headings */
+h1, h2, h3, h4, h5 {
+  font-family: var(--font-albert), system-ui, -apple-system, Segoe UI, sans-serif;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 50px;
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+
+h3 {
+  font-size: 36px;
+  line-height: 1.25;
+  letter-spacing: 0;
+}
+
+h4 {
+  font-size: 25px;
+  line-height: 1.3;
+  letter-spacing: 0.04em; 
+  text-transform: uppercase;
+}
+
+h5 {
+  color: var(--color-gray);
+  font-size: 22px;
+  line-height: 1.3;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 700;
+}
+
+/* =========================
+   COMMON UTILS
+========================= */
+.container-fluid {
+  max-width: 1440px;
+  overflow: hidden;
+}
+
+.color-gray { color: var(--color-gray); }
+.dark-blue { color: var(--dark-blue); }
+.text-lagre { font-size: var(--text-size-second); }
+
+h2.wrap-companies { font-size: 36px; }
+
+/* =========================
+   BUTTONS
+========================= */
+.btn-primary{
+  font-weight: 700;
+  font-size: 12px;
+  font-family: var(--font-imb);
+  line-height: 1.5;
+  vertical-align: middle;
+  padding: 8px 16px;
+  background-color: var(--color-blue);
+  color: white;
+}
+
+.btn-secondary{
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.41;
+  letter-spacing: 0;
+  color: white;
+  background: var(--color-green);
+  padding: 14px 28px;
+}
+
+.btn-thridary{
+  font-weight: 700;
+  font-size: 16px;
+  font-family: var(--font-imb);
+  line-height: 1.5;
+  vertical-align: middle;
+  background-color: white;
+  color: var(--color-blue);
+}
+
+.button{
+  position: relative;
+  overflow: hidden;
+}
+
+/* =========================
+   BACKGROUNDS
+========================= */
+.wrapBanner {
+  background-image: url("/line-banner.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  aspect-ratio: 1358 / 760; /* <1920 giữ theo thiết kế */
+}
+
+.wrap-solution{
+  background-image: url("/bg-via.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.the-flush{
+  background-image: url("/bg-glush.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+footer{ background-color: var(--color-blue); }
+
+/* =========================
+   MOBILE
+========================= */
+@media (max-width:767px){
+  .wrapBanner{ background-image: none; }
+
+  .h1-banner{ font-size: 34px; }
+  h4{ font-size: 23px; }
+  h2{ font-size: 34px; }
+  .text-lagre { font-size: 19px; }
+  h2.wrap-companies{ font-size: 28px; }
+
+  .wrap-solution{
+    background-image: url(/mb-solution.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .the-flush{
+    background-image: url(/mb-power.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-top: 300px;
+  }
+  .the-flush .image-right-top img{
+    height: 350px;
+  }
+}
+
+/* =========================
+   FLOAT MENU
+========================= */
+.float-menu{
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 92%;
+  height: 100%;
+  background: var(--dark-gray);
+  z-index: 111;
+  transform: translateX(100%);
+  transition: all .3s ease;
+  padding: 36px;
+}
+.float-menu li{ margin-bottom: 1rem; }
+.float-menu.active{ transform: translateX(0%); }
+
+/* =========================
+   LAYOUT PADDING MID
+========================= */
+@media (min-width: 768px) {
+  .wrap-footer,.wrap-copyright,.wrapHero > div {
+    max-width: calc(100% - 80px);
+  }
+}
+@media(max-width:1366px){
+  .wrap-footer { padding-left: 36px; }
+}
+@media (min-width: 768px) and (max-width: 1680px) {
+  .container-fluid,.wrap-footer{
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+  .container-fluid.how-it-work{
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+@media(max-width:767px){
+  .wrapper-banner:after{ display:none; }
+}
+
+/* =========================
+   HERO / BANNER (scale bằng cqw)
+========================= */
+.h1-banner{
+  font-family: var(--font-aktiv), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-weight: 700;
+  font-size: 50px;
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+
+.wrapper-banner{
+  position: relative;
+  container-type: inline-size; /* bật cqw */
+
+  /* design tokens (banner) */
+  --d-w: 1440px;
+  --d-h: 760px;
+
+  --d-line00-w: 284px;
+  --d-line00-h: 760px;
+
+  --d-line02-w: 20px;
+  --d-line02-h: 152px;
+
+  --d-line04-w: 24.85px;
+  --d-line04-h: 261.28px;
+
+  --d-line16-w: 90px;
+  --d-line16-h: 448px;
+
+  --d-menu-pt: 64px;
+  --d-hline-y: 47px;
+  --d-gutter: 40px;
+
+  /* default (<1920) */
+  --s: 1;
+  --menu-pt: var(--d-menu-pt);
+  --hline-y: var(--d-hline-y);
+  --gutter: var(--d-gutter);
+}
+
+/* nav + line ngang */
+nav.wrap-menu{
+  position: relative;
+  width: calc(100% - var(--gutter));
+  padding-top: var(--menu-pt);
+}
+nav.wrap-menu::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  top: var(--hline-y);
+  height: 1px;
+  background: #313c4b;
+  pointer-events:none;
+}
+
+/* lines/circles */
+.logo-image--wrapper-banner,
+.image--wrapper-banner--02,
+.image--wrapper-banner--04,
+.image--wrapper-banner--16{
+  position: absolute;
+  top: calc(-1 * var(--menu-pt));
+}
+
+.logo-image--wrapper-banner{
+  width:  calc(var(--d-line00-w) * var(--s));
+  height: calc(var(--d-line00-h) * var(--s));
+}
+.image--wrapper-banner--02{
+  width:  calc(var(--d-line02-w) * var(--s));
+  height: calc(var(--d-line02-h) * var(--s));
+}
+.image--wrapper-banner--04{
+  width:  calc(var(--d-line04-w) * var(--s));
+  height: calc(var(--d-line04-h) * var(--s));
+}
+.image--wrapper-banner--16{
+  width:  calc(var(--d-line16-w) * var(--s));
+  height: calc(var(--d-line16-h) * var(--s));
+}
+
+/* menu cols */
+.wrap-line-04{ width: calc(120px * var(--s)); }
+.wrap-line-16{ width: calc(200px * var(--s)); }
+
+/* >=1921: banner scale theo width (cqw) + banner cao ~90vh */
+@media (min-width: 1921px){
+  /* mở khóa section banner để cqw tăng đúng */
+  .wrapBanner{
+    aspect-ratio: auto;
+    min-height: 90vh;
+  }
+
+  .wrapper-banner{
+    --s: calc(100cqw / var(--d-w));
+    --menu-pt: calc(var(--d-menu-pt) * var(--s));
+    --hline-y: calc(var(--d-hline-y) * var(--s));
+    --gutter:  calc(var(--d-gutter) * var(--s));
+    min-height: max(90vh, calc(var(--d-h) * var(--s)));
+  }
+
+  /* scale content banner theo --s */
+  .wrapper-banner .wrap-logo-inner{
+    padding-left: calc(130px * var(--s));
+    padding-top:  calc(50px  * var(--s));
+  }
+  .wrapper-banner .logo-large{
+    width: calc(200px * var(--s));
+    height: auto;
+  }
+  .wrapper-banner .inner-left{
+    width: calc(708px * var(--s));
+    padding-bottom: calc(30px * var(--s));
+  }
+  .wrapper-banner .inner-left .h1-banner{
+    font-size: calc(50px * var(--s));
+    line-height: 1.2;
+    margin-top: calc(70px * var(--s));
+    margin-bottom: calc(26px * var(--s));
+  }
+  .wrapper-banner .inner-left p{
+    max-width: calc(657px * var(--s));
+    margin-bottom: calc(57px * var(--s));
+    font-size: calc(16px * var(--s));
+    line-height: 1.41;
+  }
+  .wrapper-banner nav.wrap-menu a{
+    font-size: calc(14px * var(--s));
+  }
+  .wrapper-banner .btn-primary{
+    font-size: calc(12px * var(--s));
+    padding: calc(8px * var(--s)) calc(16px * var(--s));
+  }
+  .wrapper-banner .btn-secondary{
+    font-size: calc(16px * var(--s));
+    padding: calc(14px * var(--s)) calc(28px * var(--s));
+  }
+  .wrapper-banner .hero-image-banner{
+    width:  calc(760px * var(--s));
+    height: calc(570px * var(--s));
+    top:   calc(20px  * var(--s));
+    right: calc(-100px * var(--s));
+  }
+}
+
+/* ==========================================================
+   ULTRA-WIDE GLOBAL SCALE (>=1921px) — CHỈ 1 BLOCK DUY NHẤT
+   (đặt sau cùng để override Tailwind max-w và spacing)
+========================================================== */
+@media (min-width: 1921px){
+  body{
+    /* nâng cap để 2560/3100 không bị “nhỏ” */
+    --S: clamp(1, calc(100vw / 1440px), 2.6);
+    font-size: calc(16px * var(--S));
+  }
+
+  /* container nở theo scale */
+  .container-fluid{
+    max-width: min(100%, calc(1440px * var(--S)));
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* scale typography global */
+  h2{ font-size: calc(50px * var(--S)); line-height: 1.2; }
+  h3{ font-size: calc(36px * var(--S)); line-height: 1.25; }
+  h4{ font-size: calc(25px * var(--S)); line-height: 1.3; letter-spacing: 0.04em; }
+  h5{ font-size: calc(22px * var(--S)); line-height: 1.3; letter-spacing: 0.04em; }
+  .text-lagre{ font-size: calc(22px * var(--S)); }
+
+  /* ------- THE PROBLEM ------- */
+  .the-problem.container-fluid{
+    padding-left:  calc(210px * var(--S));
+    padding-right: calc(40px  * var(--S));
+    margin-top:    calc(160px * var(--S));
+    margin-bottom: calc(60px  * var(--S));
+  }
+  .the-problem .wrap-inner-problem > p{
+    margin-top:    calc(30px * var(--S));
+    margin-bottom: calc(70px * var(--S));
+    max-width:     calc(800px * var(--S));
+  }
+  .the-problem .inner-wrap{ max-width: calc(1080px * var(--S)); }
+  .the-problem .box{ max-width: calc(495px * var(--S)); gap: calc(28px * var(--S)); }
+  .the-problem .box h4{ margin-bottom: calc(15px * var(--S)); }
+  img[alt="bottom-problem"]{
+    width: calc(150px * var(--S));
+    height: auto;
+    margin-top: calc(25px * var(--S));
+    margin-bottom: calc(114px * var(--S));
+  }
+
+  /* ------- COMPANIES TITLE ------- */
+  h2.wrap-companies{
+    font-size: calc(36px * var(--S));
+    max-width: calc(700px * var(--S));
+    margin-bottom: calc(190px * var(--S));
+  }
+
+  /* ------- FLOATING companies image (desktop) ------- */
+  .bottom-companies img{
+    right: calc(-40px * var(--S));
+    top:   calc(-235px * var(--S));
+    width: calc(830px * var(--S));
+    height: auto;
+  }
+
+  /* ------- SOLUTION ------- */
+  .wrap-solution{ margin-bottom: calc(100px * var(--S)); }
+  .wrap-solution .container-fluid{
+    padding-left: calc(210px * var(--S));
+    padding-right: 0;
+  }
+  .wrap-solution h4{ padding-top: calc(230px * var(--S)); }
+  .wrap-solution h2{ margin-bottom: calc(44px * var(--S)); }
+  .wrap-solution p{
+    max-width: calc(822px * var(--S));
+    padding-bottom: calc(130px * var(--S));
+  }
+
+  /* ------- HOW IT WORKS ------- */
+  .how-it-work.container-fluid{
+    padding-left:  calc(40px * var(--S));
+    padding-right: calc(40px * var(--S));
+  }
+  .how-it-work h3{ margin-bottom: calc(26px * var(--S)); }
+  .how-it-work > p{ margin-bottom: calc(20px * var(--S)); }
+  .how-it-work .inner-box{
+    margin-top: calc(60px * var(--S));
+    gap: calc(28px * var(--S));
+  }
+  .how-it-work .content{
+    max-width: calc(276px * var(--S)) !important; /* override md:max-w-[276] */
+  }
+
+  /* Heading muốn ~2 dòng: override md:max-w-[150] */
+  .how-it-work .content h5{
+    max-width: calc(220px * var(--S)) !important; /* tune 200–240 theo ý bạn */
+  }
+
+  /* Arrow: ép size theo --S (chắc chắn, không bị attr width/height làm nhỏ) */
+  .how-it-work img.how-arrow{
+  width:  calc(17px * var(--S) * 2) !important;
+  height: calc(9px  * var(--S) * 2) !important;
+    max-width: none !important;
+    flex: 0 0 auto !important;
+    display: block;
+    left: 0 !important; /* md:left-[0] */
+  }
+
+  /* ------- VALUE PROPOSITION ------- */
+  .wrapper-value{ gap: calc(132px * var(--S)); }
+  .wrapper-value .inner-content{ max-width: calc(422px * var(--S)); }
+  .wrapper-value p.dark-blue{ font-size: calc(30px * var(--S)); }
+
+  /* ------- THE FLUSH ------- */
+  .the-flush{ margin-top: calc(280px * var(--S)); }
+  .the-flush .content-info.container-fluid{
+    padding-top:    calc(111px * var(--S));
+    padding-bottom: calc(106px * var(--S));
+    padding-left:   calc(210px  * var(--S));
+    padding-right:  calc(40px  * var(--S));
+    column-gap:     calc(130px * var(--S));
+    row-gap:        calc(72px  * var(--S));
+  }
+  .the-flush .content-info h2{ max-width: calc(770px * var(--S)); }
+  .the-flush .btn-thridary{
+    width: calc(174px * var(--S));
+    height: calc(50px  * var(--S));
+    font-size: calc(16px * var(--S));
+  }
+}
+.on-value-wrap{
+       aspect-ratio: 574 / 276;
+    width: 50%;
+    margin-top: 60px;
+    margin-bottom: 127px;
+    margin-left: -5%;
+}
+
+/* Next/Image wrapper span */
+.on-value-wrap > span{
+  width: 100% !important;
+  height: 100% !important;
+  display: block !important;
+}
+
+.on-value-img{
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
+}
+
+/* ===== >1920: scale thật theo --S ===== */
+@media (min-width: 1921px){
+  .on-value-wrap{
+    margin-top: calc(112px * var(--S));
+    margin-bottom: calc(127px * var(--S));
+  }
+
+  /* tránh bị nhân đôi scale do md:scale-115 */
+  .on-value-img{
+    transform: none !important;
+  }
+
+  /* center footer giống container */
+  .wrap-footer,
+  .wrap-copyright{
+    max-width: min(100%, calc(1440px * var(--S)));
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .wrap-footer{
+    padding-left:  calc(210px * var(--S));
+          padding-right: calc(40px * var(--S));
+    padding-top:   calc(100px * var(--S));
+    margin-bottom: calc(85px  * var(--S));
+    gap:           calc(140px * var(--S)); /* nếu muốn “thoáng” hơn */
+  }
+
+  .wrap-footer .wrap-info{
+    gap: calc(140px * var(--S));
+  }
+
+  .wrap-footer .list{
+    gap: calc(34px * var(--S));
+    font-size: calc(16px * var(--S));
+  }
+
+  /* logo footer (img có max-w/max-h trong class) */
+  .wrap-footer .wrap-logo img{
+    max-width:  calc(188px * var(--S)) !important;
+    max-height: calc(57px  * var(--S)) !important;
+    height: auto !important;
+    margin-bottom: calc(14px * var(--S)) !important;
+  }
+
+  .wrap-footer .wrap-logo p{
+    font-size: calc(12px * var(--S));
+    margin-bottom: 0; /* vì md:mb-[0] */
+  }
+
+  /* socials icon (đang md:w/h = 23px) */
+  .wrap-footer .list-socials img{
+    width:  calc(23px * var(--S)) !important;
+    height: calc(23px * var(--S)) !important;
+  }
+
+  .wrap-copyright{
+    margin-bottom: calc(47px * var(--S));
+  }
+  .wrap-copyright p{
+    font-size: calc(12px * var(--S));
+  }
+
+  /* line dưới footer: vì Next/Image đổi src thành /_next/image?...%2Fcopyright-line.svg...
+     nên bắt bằng contains */
+  footer img[src*="copyright-line.svg"],
+  footer img[src*="mb-footer-line.svg"]{
+    margin-bottom: calc(40px * var(--S)) !important;
+  }
+  .content-info{
+    padding-left: 210px;
+  }
+  .list-socials{
+    gap: calc(16px * var(--S));
+  }
+  .wrap-copyright{
+    padding-right: calc(40px * var(--S));
+  }
+    .image-right-top{
+      padding-left: calc(210px * var(--S));
+    }
+
+    /* scale + position ảnh */
+    .image-right-top img{
+      width:  calc(468px * var(--S)) !important;
+      height: calc(420px * var(--S)) !important; /* hoặc height:auto nếu muốn */
+      top:    calc(-359px * var(--S)) !important;
+      right:  0 !important;
+    }
+    .the-flush .inner-info p{
+      font-size: calc(25px * var(--S));
+    }
+}
+@media(max-width:767px){
+  .on-value-wrap {
+        width: 100%;
+    margin-top: 60px;
+  }
+}
+.image-right-top{
+  overflow: inherit;
+}
